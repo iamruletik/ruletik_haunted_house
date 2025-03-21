@@ -913,7 +913,8 @@ tweaks.addBinding(pixelPassParams, 'pixelSize', {
 
 let cameraSettings = {
     cameraSpeed: 12,
-    cameraZoom: 12
+    cameraZoom: 12,
+    enableAnimation: true
 }
 
 tweaks.addBinding(cameraSettings, 'cameraSpeed', {
@@ -926,6 +927,7 @@ tweaks.addBinding(cameraSettings, 'cameraZoom', {
                                                         max: 16,
                                                         step: 1
 })
+tweaks.addBinding(cameraSettings, 'enableAnimation')
 const tick = () => {
 
     const elapsedTime = clock.getElapsedTime() //Built in function in seconds since start
@@ -937,8 +939,11 @@ const tick = () => {
 
     camera.lookAt(new THREE.Vector3()) //Empty Vector3 method resul in 0 0 0  Vector, basically center of the scene
 
-    camera.position.x = Math.sin(elapsedTime / cameraSettings.cameraSpeed ) * cameraSettings.cameraZoom
-    camera.position.z = Math.cos(elapsedTime / cameraSettings.cameraSpeed) * cameraSettings.cameraZoom
+    if (cameraSettings.enableAnimation == true) {
+        camera.position.x = Math.sin(elapsedTime / cameraSettings.cameraSpeed ) * cameraSettings.cameraZoom
+        camera.position.z = Math.cos(elapsedTime / cameraSettings.cameraSpeed) * cameraSettings.cameraZoom
+    }
+    
 
     //Render Function
     //renderer.render(scene, camera) //by default all objects will appear at center of the scene in 0 0 0 coordinates, meaning camera will be at the center too
