@@ -15,7 +15,7 @@ console.log(TextureUtils)
 //TweakPane Gui
 const pane = new Pane()
 const tweaks = pane.addFolder({ 
-                                        title: 'Tweakpane GUI' 
+                                        title: 'PixelPass' 
                                     })
 
 //Canvas Element
@@ -55,9 +55,6 @@ rgbeLoader.load('/textures/hdri.hdr', (environmentMap) => {
 //Camera Settings
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height) // FOV vertical angle, aspect ratio with/height
 camera.position.set(7,0.7,-2)
-tweaks.addBinding(camera.position, 'x')
-tweaks.addBinding(camera.position, 'y')
-tweaks.addBinding(camera.position, 'z')
 scene.add(camera)
 
 const controls = new OrbitControls( camera, canvas )
@@ -102,7 +99,6 @@ const floorMaterial = new THREE.MeshPhongMaterial({
                                                             map: floorTexture,
                                                             normalMap: floorNormalTexture
 })
-pane.addBinding(basicMaterial, 'wireframe')
 
 
 //FLOOR GROUP
@@ -877,10 +873,6 @@ const spotLight = new THREE.SpotLight(0xDCE1ED, 10, 10, Math.PI * 0.5, 0, 1)
 spotLight.position.set( 0, 8, 0 )
 
 scene.add(spotLight)
-
-tweaks.addBinding(directional.position, 'x')
-tweaks.addBinding(directional.position, 'y')
-tweaks.addBinding(directional.position, 'z')
 
 
 
