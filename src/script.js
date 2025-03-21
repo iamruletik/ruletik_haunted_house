@@ -910,6 +910,22 @@ tweaks.addBinding(pixelPassParams, 'pixelSize', {
 
 
 //Animation Loop Function//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let cameraSettings = {
+    cameraSpeed: 12,
+    cameraZoom: 12
+}
+
+tweaks.addBinding(cameraSettings, 'cameraSpeed', {
+                                                        min: 1,
+                                                        max: 16,
+                                                        step: 0.5
+})
+tweaks.addBinding(cameraSettings, 'cameraZoom', {
+                                                        min: 6,
+                                                        max: 16,
+                                                        step: 1
+})
 const tick = () => {
 
     const elapsedTime = clock.getElapsedTime() //Built in function in seconds since start
@@ -920,6 +936,9 @@ const tick = () => {
     pointLightA.position.z = Math.cos(elapsedTime) * 15
 
     camera.lookAt(new THREE.Vector3()) //Empty Vector3 method resul in 0 0 0  Vector, basically center of the scene
+
+    camera.position.x = Math.sin(elapsedTime / cameraSettings.cameraSpeed ) * cameraSettings.cameraZoom
+    camera.position.z = Math.cos(elapsedTime / cameraSettings.cameraSpeed) * cameraSettings.cameraZoom
 
     //Render Function
     //renderer.render(scene, camera) //by default all objects will appear at center of the scene in 0 0 0 coordinates, meaning camera will be at the center too
