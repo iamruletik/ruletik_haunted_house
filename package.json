@@ -1,0 +1,22 @@
+{
+  "name": "11",
+  "version": "1.0.0",
+  "main": "/src/script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [
+    "threejs"
+  ],
+  "author": "Alexander Ruletik",
+  "license": "ISC",
+  "description": "ThreeJS Exercice",
+  "dependencies": {
+    "gsap": "^3.12.7",
+    "three": "^0.172.0",
+    "tweakpane": "^4.0.5",
+    "vite": "^6.0.7",
+    "vite-plugin-restart": "^0.4.2"
+  }
+}
